@@ -1,0 +1,76 @@
+<!-- Copyright (c) Microsoft Corporation.
+     Licensed under the MIT License. -->
+
+<!-- <IndexSnippet> -->
+<div class="p-5 mb-4 bg-light rounded-3">
+  <div class="container-fluid py-5">
+
+    {{#if user}}
+    <h2>Inbox </h2>
+
+    {{#if user.messages111}}
+    <table>
+      <tr>
+        <th>Subject line</th>
+        <th style="padding: 2px 10px;">Sender name/email address</th>
+      </tr>
+
+      {{#each user.messages111}}
+      <tr>
+        <td>{{this.subject}}</td>
+        <td style="padding: 2px 10px;">{{this.from.emailAddress.name}}/{{this.from.emailAddress.address}}</td>
+      </tr>
+      {{/each}}
+
+    </table>
+    {{else}}
+    <p class="col-md-8 fs-6">Mail's not found!</p>
+    {{/if}}
+
+
+
+    {{else}}
+
+    <h4>Provide user information</h4>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          {{#if userProfile}}
+
+            <h1>Hello, {{ userProfile.first_name }}!</h1>
+
+            {{#unless userProfile.accounts}}
+
+              <p><a href="/auth/signin" class="btn btn-primary btn-large">Link with Outlook</a> </p>
+
+            {{/unless}}
+
+          {{else}}
+          <form action="/" method="post" role="form" enctype="application/x-www-form-urlencoded">
+            <legend>Enter Registration Information Here</legend>
+
+            <div class="form-group">
+              <label for="first_name">First Name</label>
+              <input type="text" class="form-control" name="first_name" id="first_name" placeholder="First Name">
+            </div>
+
+            <div class="form-group">
+              <label for="last_name">Last Name</label>
+              <input type="text" class="form-control" name="last_name" id="first_name" placeholder="Last Name">
+            </div>
+
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+
+
+          {{/if}}
+
+        </div>
+      </div>
+    </div>
+
+    {{/if}}
+  </div>
+</div>
+<!-- </IndexSnippet> -->
